@@ -1,0 +1,36 @@
+1 crear base de datos de nombre: api_ferremax.
+
+2 en caso de no tener usuario, crear un usuario que tenga todos los permisos [tipo admin] 
+
+3 crear base de datos de nombre: "api_ferremax"
+
+4 crear tabla "herramientas" dentro de la base de datos "api_ferremax"
+
+    CREATE TABLE herramientas (
+        codigo INT(5)PRIMARY KEY,
+        marca varchar(20) NOT NULL,
+        codigo_herra varchar(20) NOT NULL,
+        nombre varchar(30) NOT NULL,
+        fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+        valor DECIMAL(10,2)NOT NULL
+    );
+
+5 ingresar algun valor para ver si ingresa datos
+
+INSERT INTO herramientas VALUES ('FER-12345','Bosch','BOS-67890','Taladro Percutor Bosch',NOW(),89090.99);
+INSERT INTO herramientas VALUES ('FER-23459','Maquita','MAQ-11690','Esmeril Angular Maquita',NOW(),130000.00);
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+ojo #1 : utilize el usuario que creo el profesor en clases en caso que no tengan usuario deben de crear uno y modificar estas lineas
+
+    $servidor = 'localhost'; // y esto de igual manera queda asi.
+    $usuario = 'usuario_api'; // se cambia a su nombre de usuario creado. 
+    $password = 'Api.2025$'; // la clave que crearon para ese usuario.
+    $base_datos = 'api_ferremax'; // esto se queda igual.
+
+ojo #2 : la fecha no es necesario ponerla al momento de usar metodos PUT, POST; PATCH eso es porque hice que la base de datos lo ponga automaticamente usando este procesos:
+
+$sql = "UPDATE herramientas SET marca = '$marca', fecha= NOW() WHERE codigo = $codigo"; [el metodo NOW inprime la fecha en la base de datos y la actualiza si es modificado el dato en si]
+
+
+
