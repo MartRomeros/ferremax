@@ -1,10 +1,11 @@
 <?php 
-    $servidor = 'localhost';
-    $usuario = 'usuario_api';
-    $password = 'Api.2025$';
-    $base_datos = 'api_ferremax';
+    $servidor = 'hopper.proxy.rlwy.net';
+    $usuario = 'root';
+    $password = 'FlsbTDudlzbnfVqEJxPUNDuuajHfdBJk';
+    $base_datos = 'railway';
+    $puerto = 39733;
 
-    $conexion = mysqli_connect($servidor,$usuario,$password,$base_datos);
+    $conexion = mysqli_connect($servidor,$usuario,$password,$base_datos,$puerto);
     
     if (!$conexion)
         echo "NO CONECTADO";
