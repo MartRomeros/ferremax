@@ -1,5 +1,4 @@
 <?php 
-
     $servidor = 'localhost';
     $usuario = 'usuario_api';
     $password = 'Api.2025$';
@@ -9,5 +8,4 @@
     
     if (!$conexion)
         echo "NO CONECTADO";
-
 ?>
