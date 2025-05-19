@@ -51,11 +51,10 @@ $productos = $data['DATOS'];
 
             <h3 class="col">Nuestros productos</h3>
 
-            <select class="form-select col">
+            <select class="form-select col" onclick="mostrarValor()" id="valor">
                 <option selected>Conversor de precios</option>
-                <option value="1">A dolares</option>
-                <option value="2">A pesos argentinos</option>
-                <option value="3">A nose xd</option>
+                <option value="dolar">A dolares</option>
+                <option value="euros">A Euros</option>
             </select>
         </section>
 
@@ -68,11 +67,10 @@ $productos = $data['DATOS'];
                     
                     <div class="card-body">
                         <h5 class="card-title">'. $value["nombre"] .'</h5>
-                        <ul>
+                        <ul class="details">
                             <li>Marca: '.$value["marca"] .'</li>
                             <li>Codigo: '.$value["codigo_herra"] .'</li>
                             <li class="valor">Precio: '.$value["valor"] .'</li>
-                            <li class="precio-convertido" </li>
                         </ul>                        
                     </div>
                 </div>
@@ -96,6 +94,7 @@ $productos = $data['DATOS'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
+    <script src="js/apiMonedas.js"></script>
 </body>
 
 </html>
