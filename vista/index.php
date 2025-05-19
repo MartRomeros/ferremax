@@ -14,6 +14,7 @@ $productos = $data['DATOS'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -45,17 +46,34 @@ $productos = $data['DATOS'];
     </header>
 
     <main class="container-fluid">
+
+        <section class="row">
+
+            <h3 class="col">Nuestros productos</h3>
+
+            <select class="form-select col">
+                <option selected>Conversor de precios</option>
+                <option value="1">A dolares</option>
+                <option value="2">A pesos argentinos</option>
+                <option value="3">A nose xd</option>
+            </select>
+        </section>
+
         <!-- Parte del martin-->
         <section class="row">
             <?php
             foreach ($productos as $producto => $value) {
                 echo '
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                <div class="card col-lg-3">
+                    
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">'. $value["nombre"] .'</h5>
+                        <ul>
+                            <li>Marca: '.$value["marca"] .'</li>
+                            <li>Codigo: '.$value["codigo_herra"] .'</li>
+                            <li class="valor">Precio: '.$value["valor"] .'</li>
+                            <li class="precio-convertido" </li>
+                        </ul>                        
                     </div>
                 </div>
                 ';
