@@ -88,7 +88,7 @@
 
     //---------------------------------------------------------------------------------------------------------------------------------
 
-    function eliminar_herramienta(){ // tay seguro guaton??
+    function eliminar_herramienta(){ 
             
             global $conexion;
 

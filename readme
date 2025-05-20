@@ -1,0 +1,220 @@
+información : actualmente el api de ferremax se encuentra conectado a una base de datos MySql de formato nube, esto sirve para la preservacion de los datos
+
+archivo : db/conexion.php
+
+    $servidor = 'hopper.proxy.rlwy.net';
+    $usuario = 'root';
+    $password = 'FlsbTDudlzbnfVqEJxPUNDuuajHfdBJk';
+    $base_datos = 'railway';
+    $puerto = 39733;
+
+en caso que los datos no se muestren es necesario cambiar el metodo de comunicación a un formato localhost:
+cambiar estas lineas de codigo en el archivo: db/conexion.php
+    
+    $servidor = 'localhost';
+    $usuario = 'usuario_api';
+    $password = 'Api.2025$';
+    $base_datos = 'api_ferremax';
+
+---------------------------------------------------------------------------- en caso de tener que utlizar base de datos mediante metodo tradicional (myphpAdmin)
+1. activar Xammp
+
+2. arrancar Apache
+
+3. arrancar MySql
+
+4. Colocar este carpeta/ repositorio en carpeta htdocs
+
+2 crear base de datos de nombre: api_ferremax. dentro de myphpadmin
+
+2 en caso de no tener usuario, crear un usuario que tenga todos los permisos [tipo admin] en phpmyadmin
+
+4 crear tabla "herramientas" dentro de la base de datos "api_ferremax"
+
+    CREATE TABLE herramientas (
+        codigo INT(5)PRIMARY KEY,
+        marca varchar(20) NOT NULL,
+        codigo_herra varchar(20) NOT NULL,
+        nombre varchar(50) NOT NULL,
+        fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+        valor DECIMAL(10,2)NOT NULL
+    );
+
+5 ingresar algun valor para ver si ingresa datos
+
+INSERT INTO herramientas VALUES (12345,'Bosch','BOS-67890','Taladro Percutor Bosch',NOW(),89090.99);
+INSERT INTO herramientas VALUES (23459,'Maquita','MAQ-11690','Esmeril Angular Maquita',NOW(),130000.00);
+
+para utilizar podman METODOS GET, POST, PUT, PATCH, DELETE
+
+Get de todas las herramientas :
+-- http://localhost/ferremax/
+
+Get para una sola herramineta :
+-- http://localhost/ferremax?codigo=12345
+
+POST para 10 herraminetas :
+
+  {
+    "codigo": "20001",
+    "marca": "Truper",
+    "codigo_herra": "TRU-LLAV10",
+    "nombre": "Llave combinada 10mm",
+    "valor": "3500.00"
+  }
+  {
+    "codigo": "20002",
+    "marca": "Bosch",
+    "codigo_herra": "BOS-TAL500W",
+    "nombre": "Taladro percutor 500W",
+    "valor": "78000.00"
+  }
+  {
+    "codigo": "20003",
+    "marca": "Makita",
+    "codigo_herra": "MAK-LIJRND",
+    "nombre": "Lijadora orbital redonda",
+    "valor": "55000.00"
+  }
+  {
+    "codigo": "20004",
+    "marca": "Dewalt",
+    "codigo_herra": "DEW-SIERRC",
+    "nombre": "Sierra circular 7 1/4 pulgadas",
+    "valor": "98000.00"
+  }
+  {
+    "codigo": "20005",
+    "marca": "Black+Decker",
+    "codigo_herra": "BLK-MULTI",
+    "nombre": "Multiherramienta oscilante eléctrica",
+    "valor": "115000.00"
+  }
+  {
+    "codigo": "20006",
+    "marca": "Holcim",
+    "codigo_herra": "HOL-CEM25KG",
+    "nombre": "Saco de cemento gris 25kg",
+    "valor": "27000.00"
+  }
+  {
+    "codigo": "20007",
+    "marca": "Cemex",
+    "codigo_herra": "CEM-ARE50KG",
+    "nombre": "Saco de arena fina 50kg",
+    "valor": "19000.00"
+  }
+  {
+    "codigo": "20008",
+    "marca": "Ladrillera Santafé",
+    "codigo_herra": "LAD-ROJOSTD",
+    "nombre": "Ladrillo rojo estándar",
+    "valor": "800.00"
+  }
+  {
+    "codigo": "20009",
+    "marca": "Corona",
+    "codigo_herra": "COR-ACMARMOL",
+    "nombre": "Acabado en mármol blanco",
+    "valor": "68000.00"
+  }
+  {
+    "codigo": "20010",
+    "marca": "Pintuco",
+    "codigo_herra": "PIN-PINTBLAN",
+    "nombre": "Pintura vinílica blanca 1 galón",
+    "valor": "32000.00"
+  }
+  {
+    "codigo": "20011",
+    "marca": "Sayer",
+    "codigo_herra": "SAY-BARNZCL",
+    "nombre": "Barniz transparente para madera",
+    "valor": "25000.00"
+  }
+  {
+    "codigo": "20012",
+    "marca": "Itacer",
+    "codigo_herra": "ITA-CERBLAN",
+    "nombre": "Cerámico blanco 60x60 cm",
+    "valor": "15000.00"
+  }
+  {
+    "codigo": "20013",
+    "marca": "3M",
+    "codigo_herra": "3M-CASSEG",
+    "nombre": "Casco de seguridad industrial",
+    "valor": "26000.00"
+  }
+  {
+    "codigo": "20014",
+    "marca": "Ansell",
+    "codigo_herra": "ANS-GUANTNL",
+    "nombre": "Guantes de nitrilo resistentes",
+    "valor": "9000.00"
+  }
+  {
+    "codigo": "20015",
+    "marca": "Uvex",
+    "codigo_herra": "UVX-LENSEG",
+    "nombre": "Lentes de seguridad antirayaduras",
+    "valor": "14000.00"
+  }
+  {
+    "codigo": "20016",
+    "marca": "Toolcraft",
+    "codigo_herra": "TCT-CINTME",
+    "nombre": "Cinta métrica 5 metros",
+    "valor": "5000.00"
+  }
+
+PUT para prueba herramineta id 12345 :
+  
+{
+    "codigo": "12345",
+    "marca": "Prueba",
+    "codigo_herra": "PRU-EVALU",
+    "nombre": "Esto es el PUT",
+    "valor": "10000.00"
+}
+
+PATCH para prueba herramineta id 12345 :
+
+{
+    "codigo": "12345",
+    "marca": "PATCH"
+}
+
+{
+    "codigo": "12345",
+    "codigo_herra": "PAT-TEST"
+}
+
+{
+    "codigo": "12345",
+    "nombre": "MAS CLARO NO ES",
+}
+
+{
+    "codigo": "12345",
+    "valor": "2000.00"
+}
+
+DELETE para prueba herramineta id 12345 :
+
+{
+    "codigo": "12345",
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+ojo #1 : utilize el usuario que creo el profesor en clases en caso que no tengan usuario deben de crear uno y modificar estas lineas
+
+    $servidor = 'localhost'; // y esto de igual manera queda asi.
+    $usuario = 'usuario_api'; // se cambia a su nombre de usuario creado. 
+    $password = 'Api.2025$'; // la clave que crearon para ese usuario.
+    $base_datos = 'api_ferremax'; // esto se queda igual.
+
+ojo #2 : la fecha no es necesario ponerla al momento de usar metodos PUT, POST; PATCH eso es porque hice que la base de datos lo ponga automaticamente usando este procesos:
+
+$sql = "UPDATE herramientas SET marca = '$marca', fecha= NOW() WHERE codigo = $codigo"; [el metodo NOW inprime la fecha en la base de datos y la actualiza si es modificado el dato en si]
