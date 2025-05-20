@@ -1,0 +1,27 @@
+.content-user {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap; 
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2em;
+    width: 37rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    gap: 28px;
+    column-gap: 20px;
+}
+
+.usuario img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}

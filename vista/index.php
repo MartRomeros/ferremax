@@ -86,7 +86,26 @@ $productos = $data['DATOS'];
     </main>
 
     <main class="container-fluid">
-        <!-- Parte del lukas-->
+
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+        <meta charset="UTF-8">
+        <title>Usuarios Api</title>
+        <link rel="stylesheet" href="css/estiloUsers.css">
+        </head>
+        <body>
+
+        <main class="container-fluid">
+            <h1>Usuarios desde API</h1>
+            <div id="listaUsuarios"></div>
+        </main>
+
+        <!-- Enlaza tu script correctamente desde la carpeta 'js' -->
+        <script src="js/apiUsuarios.js"></script>
+
+        </body>
+        </html>
 
     </main>
 
