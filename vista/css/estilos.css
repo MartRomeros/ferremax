@@ -1,19 +1,184 @@
-main{
+main {
     padding: 2vh;
 }
 
-section:first-child{
+section:first-child {
     justify-content: start;
     gap: 0vh;
 }
 
-section{    
+section {
     padding: 2vh;
     justify-content: space-evenly;
     gap: 1vh;
 }
 
-.card-body i {
+div#listaUsuarios {
+    padding: 2vh;
+    justify-content: center;
+    gap: 5vh;
+}
+
+.card {
+    padding: 0;
+}
+
+.usuario {
+    padding: 2vh;
+}
+
+.usuario img {
+    width: 100%;
+}
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --light-bg: #f8f9fa;
+    --dark-bg: #343a40;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+.header {
+    padding: 30px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    margin-bottom: 30px;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
-    border: 1px red solid;  
+}
+
+.header h1 {
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.section-folder {
+    margin-top: 30px;
+    padding: 15px 20px;
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    border-left: 5px solid var(--primary-color);
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Mejoras para la tabla */
+#tablaFeriados {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background: white;
+}
+
+#tablaFeriados thead {
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    color: white;
+}
+
+#tablaFeriados th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+#tablaFeriados td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+#tablaFeriados tbody tr:hover td {
+    background-color: #f1f5fd;
+    transform: translateX(5px);
+}
+
+#tablaFeriados tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Estilos para los botones */
+.btn-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.btn-action {
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-action i {
+    margin-right: 8px;
+}
+
+/* Badges para tipos de feriado */
+.badge-type {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-inalienable {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+/* Animación de carga */
+.loader {
+    display: none;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 30px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #tablaFeriados {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .header {
+        padding: 20px;
+    }
 }

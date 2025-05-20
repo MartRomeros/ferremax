@@ -15,6 +15,7 @@ $productos = $data['DATOS'];
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -66,11 +67,11 @@ $productos = $data['DATOS'];
                 <div class="card col-lg-3">
                     
                     <div class="card-body">
-                        <h5 class="card-title">'. $value["nombre"] .'</h5>
+                        <h5 class="card-title">' . $value["nombre"] . '</h5>
                         <ul class="details">
-                            <li>Marca: '.$value["marca"] .'</li>
-                            <li>Codigo: '.$value["codigo_herra"] .'</li>
-                            <li class="valor">Precio: '.$value["valor"] .'</li>
+                            <li>Marca: ' . $value["marca"] . '</li>
+                            <li>Codigo: ' . $value["codigo_herra"] . '</li>
+                            <li class="valor">Precio: ' . $value["valor"] . '</li>
                         </ul>                        
                     </div>
                 </div>
@@ -82,31 +83,50 @@ $productos = $data['DATOS'];
 
     <main class="container-fluid">
         <!-- Parte del nicos-->
+        <h3>Dias feriados en los que no atendemos</h3>
+        <div class="header">
+            <h1><i class="fas fa-calendar-alt"></i> Feriados de Chile</h1>
+            <p class="lead">Información oficial actualizada</p>
+        </div>
+
+        <div class="btn-container">
+            <button id="btnFeriados" class="btn-action btn-primary">
+                <i class="fas fa-sync-alt"></i> Actualizar
+            </button>
+            <button id="btnClima" class="btn-action btn-secondary">
+                <i class="fas fa-cloud-sun"></i> Clima
+            </button>
+            <button id="btnGeografia" class="btn-action btn-secondary">
+                <i class="fas fa-mountain"></i> Geografía
+            </button>
+        </div>
+
+        <div class="loader" id="loader"></div>
+
+        <table id="tablaFeriados" class="table">
+            <thead>
+                <tr>
+                    <th><i class="far fa-calendar"></i> Fecha</th>
+                    <th><i class="fas fa-info-circle"></i> Título</th>
+                    <th><i class="fas fa-tag"></i> Tipo</th>
+                    <th><i class="fas fa-lock"></i> Inalienable</th>
+                    <th><i class="fas fa-ellipsis-h"></i> Extra</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTabla">
+                <!-- Los datos de feriados se cargarán aquí -->
+            </tbody>
+        </table>
+
+        <div class="section-folder">
+            <i class="fas fa-info-circle"></i> Información oficial proporcionada por el Gobierno de Chile
+        </div>
 
     </main>
 
     <main class="container-fluid">
-
-        <!DOCTYPE html>
-        <html lang="es">
-        <head>
-        <meta charset="UTF-8">
-        <title>Usuarios Api</title>
-        <link rel="stylesheet" href="css/estiloUsers.css">
-        </head>
-        <body>
-
-        <main class="container-fluid">
-            <h1>Usuarios desde API</h1>
-            <div id="listaUsuarios"></div>
-        </main>
-
-        <!-- Enlaza tu script correctamente desde la carpeta 'js' -->
-        <script src="js/apiUsuarios.js"></script>
-
-        </body>
-        </html>
-
+        <h3>Nuestros comentarios</h3>
+        <div id="listaUsuarios" class="row"></div>
     </main>
 
 
@@ -114,6 +134,9 @@ $productos = $data['DATOS'];
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
     <script src="js/apiMonedas.js"></script>
+    <!-- Enlaza tu script correctamente desde la carpeta 'js' -->
+    <script src="js/apiUsuarios.js"></script>
+    <script src="js/apiFeriados.js"></script>
 </body>
 
 </html>
