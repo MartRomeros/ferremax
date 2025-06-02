@@ -3,7 +3,7 @@
     function ver_herramientas(){ // esto es para todo las herramientas
         
         global $conexion;
-        $sql = 'SELECT * FROM herramientas';
+        $sql = 'SELECT * FROM tbl_benjamin_nunez';
         $resultado = mysqli_query($conexion,$sql);
 
         $filas = [];
@@ -24,7 +24,7 @@
         global $conexion;
 
         $codigo = intval($_GET['codigo']);  //metodo para solicitar el id mediante url = GET
-        $sql = 'SELECT * FROM herramientas WHERE codigo = ?'; // consulta SQL con parametro WHERE agregado
+        $sql = 'SELECT * FROM tbl_benjamin_nunez WHERE codigo = ?'; // consulta SQL con parametro WHERE agregado
         $prepare = mysqli_prepare($conexion, $sql); // transforma la consulta y la envia a la base de datos PhpmyAdmin
 
         mysqli_stmt_bind_param($prepare, 'i', $codigo);  //($prepare= sentencia preparada, i [integer] = tipo de dato, $id_empleado = la variable de arriba que sera utilizada para la consulta )
@@ -54,7 +54,7 @@
         $nombre         = $info['nombre'] ?? '';
         $valor          = $info['valor']?? '';
 
-        $sql = "INSERT INTO herramientas VALUES ('$codigo','$marca','$codigo_herra','$nombre',NOW(),'$valor')";
+        $sql = "INSERT INTO tbl_benjamin_nunez VALUES ('$codigo','$marca','$codigo_herra','$nombre',NOW(),'$valor')";
         $resultado = mysqli_query($conexion,$sql);
         
         if($resultado)
@@ -78,7 +78,7 @@
         $nombre         = $info['nombre'] ?? '';
         $valor          = $info['valor']?? '';
 
-        $sql = "UPDATE herramientas SET codigo = '$codigo', marca = '$marca', codigo_herra ='$codigo_herra', nombre ='$nombre', fecha = now(), valor ='$valor' WHERE codigo = $codigo";
+        $sql = "UPDATE tbl_benjamin_nunez SET codigo = '$codigo', marca = '$marca', codigo_herra ='$codigo_herra', nombre ='$nombre', fecha = now(), valor ='$valor' WHERE codigo = $codigo";
         $resultado = mysqli_query($conexion,$sql);
         if($resultado)
             echo json_encode(['Info' => 'ok', 'Mensaje' => 'herramienta actualizado']);
@@ -96,7 +96,7 @@
             
             $codigo    = $info['codigo'] ?? '';
 
-            $sql = "DELETE FROM herramientas WHERE codigo = $codigo";
+            $sql = "DELETE FROM tbl_benjamin_nunez WHERE codigo = $codigo";
             $resultado = mysqli_query($conexion,$sql);
 
             if($resultado)
@@ -121,7 +121,7 @@
         $valor          = $info['valor']?? '';
 
         if(isset($info['marca'])){
-            $sql = "UPDATE herramientas SET marca = '$marca', fecha= NOW() WHERE codigo = $codigo";
+            $sql = "UPDATE tbl_benjamin_nunez SET marca = '$marca', fecha= NOW() WHERE codigo = $codigo";
             $resultado = mysqli_query($conexion,$sql);
             if($resultado)
                 echo json_encode(['Info' => 'ok', 'Mensaje' => 'marca herramienta id: ' .$codigo. ' modificado']);
@@ -129,7 +129,7 @@
                 echo json_encode(['Info' => 'Error', 'Mensaje' => 'marca herramienta id:' .$codigo. 'NO modificado']);
         }
         if(isset($info['codigo_herra'])){
-            $sql = "UPDATE herramientas SET codigo_herra = '$codigo_herra', fecha= NOW() WHERE codigo = $codigo";
+            $sql = "UPDATE tbl_benjamin_nunez SET codigo_herra = '$codigo_herra', fecha= NOW() WHERE codigo = $codigo";
             $resultado = mysqli_query($conexion,$sql);
             if($resultado)
                 echo json_encode(['Info' => 'ok', 'Mensaje' => 'codigo_herramienta id: ' .$codigo. ' modificado']);
@@ -137,7 +137,7 @@
                 echo json_encode(['Info' => 'Error', 'Mensaje' => 'codigo_herramienta id: ' .$codigo. ' NO modificado']);
         }
         if(isset($info['nombre'])){
-            $sql = "UPDATE herramientas SET nombre = '$nombre', fecha= NOW() WHERE codigo = $codigo";
+            $sql = "UPDATE tbl_benjamin_nunez SET nombre = '$nombre', fecha= NOW() WHERE codigo = $codigo";
             $resultado = mysqli_query($conexion,$sql);
             if($resultado)
                 echo json_encode(['Info' => 'ok', 'Mensaje' => 'nombre herramienta id: ' .$codigo. ' modificado']);
@@ -145,7 +145,7 @@
                 echo json_encode(['Info' => 'Error', 'Mensaje' => 'nombre herramienta id: ' .$codigo. ' NO modificado']);
         }
         if(isset($info['valor'])){
-            $sql = "UPDATE herramientas SET valor = '$valor', fecha= NOW() WHERE codigo = $codigo";
+            $sql = "UPDATE tbl_benjamin_nunez SET valor = '$valor', fecha= NOW() WHERE codigo = $codigo";
             $resultado = mysqli_query($conexion,$sql);
             if($resultado)
                 echo json_encode(['Info' => 'ok', 'Mensaje' => 'valor herramienta id: ' .$codigo. ' modificado']);

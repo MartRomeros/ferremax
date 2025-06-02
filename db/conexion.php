@@ -1,11 +1,10 @@
 <?php 
-    $servidor = 'hopper.proxy.rlwy.net';
-    $usuario = 'root';
-    $password = 'FlsbTDudlzbnfVqEJxPUNDuuajHfdBJk';
-    $base_datos = 'railway';
-    $puerto = 39733;
+    $servidor = 'localhost';
+    $usuario = 'cen74533_bduser_bomberos';
+    $password = 'ASY5131.2025';
+    $base_datos = 'cen74533_bomberos';
 
-    $conexion = mysqli_connect($servidor,$usuario,$password,$base_datos,$puerto);
+    $conexion = mysqli_connect($servidor,$usuario,$password,$base_datos);
     
     if (!$conexion)
         echo "NO CONECTADO";
