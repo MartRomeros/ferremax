@@ -8,7 +8,7 @@
 <head>
 </head>
 <body>
-  <p>Estimados Alumnos</p>
+  <p>Se pudo amigos</p>
   <br>
   <p>Debido a las fuertes lluvias que se aproximan en 15 dias más, suspenderemos el examen transversal.</p>
   <br>
@@ -29,13 +29,13 @@
     $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
     // Cabeceras adicionales
-    $cabeceras .= 'From: Mauricio Catron <mcatronl@duoc.cl>' . "\r\n";
-    $cabeceras .= 'Cc: ya.larraguibel@duocuc.cl' . "\r\n";
+    $cabeceras .= 'From: Benjamin Nunez <mcatronl@duoc.cl>' . "\r\n";
+    $cabeceras .= 'Cc: benj.nuneza@duocuc.cl' . "\r\n";
     
-    mail($correo,'Suspención de Eccámenes Transverzales ⚠',$mensaje,$cabeceras);
+    mail($correo,'Prueba de mensajeria por correo ⚠',$mensaje,$cabeceras);
     
     echo "<script>alert('Correo enviado correctamente')</script>";
-    echo "<script>location.href = 'https://enmelipilla.cl/benjamin_nunez/vista'</script>";
+    echo "<script>location.href = 'https://enmelipilla.cl/benjamin_nunez/vista/MainView.php'</script>";
     
     
 ?>

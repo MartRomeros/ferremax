@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Ferremax</a>
+                <a class="navbar-brand" href="https://enmelipilla.cl/benjamin_nunez/vista/MainView.php">Ferremax</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@
                             <a class="nav-link" href="#">Dias feriados</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Comentarios</a>
+                            <a class="nav-link" href="https://enmelipilla.cl/benjamin_nunez/vista/VistaMail.php">Comentarios</a>
                         </li>
                     </ul>
                 </div>
@@ -39,9 +39,9 @@
         </nav>
     </header>
 
-    <h2>HTML Formulario de prueba</h2>
+    <h2> </h2>
 
-    <form action="mail/mail.php" method="get">
+    <form action="https://enmelipilla.cl/benjamin_nunez/Mail/mail.php" method="get">
       <label for="fname">First name:</label><br>
       <input type="text" name="nombre" placeholder="John" required><br>
       <label for="lname">Last name:</label><br>

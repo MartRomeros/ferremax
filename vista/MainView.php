@@ -23,7 +23,7 @@ $productos = $data['DATOS'];
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Ferremax</a>
+                <a class="navbar-brand" href="https://enmelipilla.cl/benjamin_nunez/vista/MainView.php">Ferremax</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@ $productos = $data['DATOS'];
                             <a class="nav-link" href="#">Dias feriados</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Comentarios</a>
+                            <a class="nav-link" href="https://enmelipilla.cl/benjamin_nunez/vista/VistaMail.php">Comentarios</a>
                         </li>
                     </ul>
                 </div>
@@ -67,6 +67,7 @@ $productos = $data['DATOS'];
                 <div class="card col-lg-3">
                     
                     <div class="card-body">
+                        <img src="' . $value["imagen"] . '" alt="Imagen del producto" class="card-img-top mb-2" style="max-height: 300px; object-fit: cover;">
                         <h5 class="card-title">' . $value["nombre"] . '</h5>
                         <ul class="details">
                             <li>Marca: ' . $value["marca"] . '</li>
