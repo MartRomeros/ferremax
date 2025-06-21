@@ -109,63 +109,40 @@
 
     //---------------------------------------------------------------------------------------------------------------------------------
 
-    function actualizar_campos_herramienta(){ // funciona pero hay que optimizar 
-        
+    function actualizar_campos_herramienta() {
         global $conexion;
-
-        $info = json_decode(file_get_contents('php://input'),true);  
-            
-        $codigo         = $info['codigo'] ?? '';
-
-        $marca          = $info['marca'] ?? '';
-        $codigo_herra   = $info['codigo_herra'] ?? '';
-        $nombre         = $info['nombre'] ?? '';
-        $valor          = $info['valor']?? '';
-        $imagen         = $info['imagen']?? '';
-
-        if(isset($info['marca'])){
-            $sql = "UPDATE tbl_benjamin_nunez SET marca = '$marca', fecha= NOW() WHERE codigo = $codigo";
-            $resultado = mysqli_query($conexion,$sql);
-            if($resultado)
-                echo json_encode(['Info' => 'ok', 'Mensaje' => 'marca herramienta id: ' .$codigo. ' modificado']);
-            else
-                echo json_encode(['Info' => 'Error', 'Mensaje' => 'marca herramienta id:' .$codigo. 'NO modificado']);
+    
+        $info = json_decode(file_get_contents('php://input'), true);
+        $codigo = $info['codigo'] ?? '';
+    
+        if (!$codigo) {
+            echo json_encode(['Error' => true, 'Mensaje' => 'Código no proporcionado']);
+            return;
         }
-        if(isset($info['codigo_herra'])){
-            $sql = "UPDATE tbl_benjamin_nunez SET codigo_herra = '$codigo_herra', fecha= NOW() WHERE codigo = $codigo";
-            $resultado = mysqli_query($conexion,$sql);
-            if($resultado)
-                echo json_encode(['Info' => 'ok', 'Mensaje' => 'codigo_herramienta id: ' .$codigo. ' modificado']);
-            else
-                echo json_encode(['Info' => 'Error', 'Mensaje' => 'codigo_herramienta id: ' .$codigo. ' NO modificado']);
+    
+        $campos = [];
+        if (isset($info['marca']))         $campos[] = "marca = '" . mysqli_real_escape_string($conexion, $info['marca']) . "'";
+        if (isset($info['codigo_herra']))  $campos[] = "codigo_herra = '" . mysqli_real_escape_string($conexion, $info['codigo_herra']) . "'";
+        if (isset($info['nombre']))        $campos[] = "nombre = '" . mysqli_real_escape_string($conexion, $info['nombre']) . "'";
+        if (isset($info['valor']))         $campos[] = "valor = '" . mysqli_real_escape_string($conexion, $info['valor']) . "'";
+        if (isset($info['imagen']))        $campos[] = "imagen = '" . mysqli_real_escape_string($conexion, $info['imagen']) . "'";
+    
+        if (empty($campos)) {
+            echo json_encode(['Error' => true, 'Mensaje' => 'No hay campos para actualizar']);
+            return;
         }
-        if(isset($info['nombre'])){
-            $sql = "UPDATE tbl_benjamin_nunez SET nombre = '$nombre', fecha= NOW() WHERE codigo = $codigo";
-            $resultado = mysqli_query($conexion,$sql);
-            if($resultado)
-                echo json_encode(['Info' => 'ok', 'Mensaje' => 'nombre herramienta id: ' .$codigo. ' modificado']);
-            else
-                echo json_encode(['Info' => 'Error', 'Mensaje' => 'nombre herramienta id: ' .$codigo. ' NO modificado']);
+    
+        $campos[] = "fecha = NOW()"; // actualiza la fecha siempre
+        $sql = "UPDATE tbl_benjamin_nunez SET " . implode(', ', $campos) . " WHERE codigo = " . intval($codigo);
+    
+        $resultado = mysqli_query($conexion, $sql);
+    
+        if ($resultado) {
+            echo json_encode(['Info' => 'ok', 'Mensaje' => 'Herramienta ID ' . $codigo . ' modificada con éxito']);
+        } else {
+            echo json_encode(['Error' => true, 'Mensaje' => 'Error al modificar herramienta ID ' . $codigo, 'ErrorSQL' => mysqli_error($conexion)]);
         }
-        if(isset($info['valor'])){
-            $sql = "UPDATE tbl_benjamin_nunez SET valor = '$valor', fecha= NOW() WHERE codigo = $codigo";
-            $resultado = mysqli_query($conexion,$sql);
-            if($resultado)
-                echo json_encode(['Info' => 'ok', 'Mensaje' => 'valor herramienta id: ' .$codigo. ' modificado']);
-            else
-                echo json_encode(['Info' => 'Error', 'Mensaje' => 'valor herramienta id: ' .$codigo. ' NO modificado']);
-        }
-        if(isset($info['imagen'])){
-            $sql = "UPDATE tbl_benjamin_nunez SET imagen = '$imagen', fecha= NOW() WHERE codigo = $codigo";
-            $resultado = mysqli_query($conexion,$sql);
-            if($resultado)
-                echo json_encode(['Info' => 'ok', 'Mensaje' => 'imagen herramienta id: ' .$codigo. ' modificado']);
-            else
-                echo json_encode(['Info' => 'Error', 'Mensaje' => 'imagen herramienta id: ' .$codigo. ' NO modificado']);
-        }
-
     }
-
 
 
 ?>
